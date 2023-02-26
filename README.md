@@ -1,4 +1,5 @@
-# vue-recipe
+<<<<<<< HEAD
+# vue-correct
 =======
 # Vue 3 + Vite
 
