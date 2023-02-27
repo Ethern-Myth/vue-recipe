@@ -21,7 +21,7 @@ const filteredList = () => {
             <h3>Recipes</h3>
         </div>
         <div class="col hstack justify-content-end">
-            <router-link to="/save" class="btn btn-primary">Create</router-link>
+            <router-link to="/save/0" class="btn btn-primary">Create</router-link>
         </div>
     </div>
     <div class="form-group mt-4">

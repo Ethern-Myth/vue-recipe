@@ -1,5 +1,5 @@
 <script>
-import { GET_Recipe_BY_id } from "../controllers/controller";
+import { GET_Recipe_BY_id, DELETE_Recipe } from "../controllers/controller";
 
 export default {
     data() {
@@ -12,9 +12,10 @@ export default {
         this.id = this.$route.params.id;
         GET_Recipe_BY_id(this.id).then((res) => this.recipe = res)
     },
-    methods() {
-        const handleDelete = () => {
-            console.log('clicked')
+    methods: {
+        handleDelete(id) {
+            DELETE_Recipe(id)
+            setTimeout(() => { window.location.href = "/"; }, 1000);
         }
     }
 }
@@ -29,8 +30,8 @@ export default {
             <small><i>{{ recipe.created_at }}</i></small>
         </div>
         <div class="col hstack gap-2 justify-content-end">
-            <router-link to="/save" class="btn btn-secondary">Edit</router-link>
-            <button @click="handleDelete" class="btn btn-danger">Delete</button>
+            <router-link :to="`/save/${recipe.id}`" class="btn btn-secondary">Edit</router-link>
+            <button type="button" @click="handleDelete(recipe.id)" class="btn btn-danger">Delete</button>
             <router-link to="/" class="btn btn-primary">Back</router-link>
         </div>
         <div class="mt-4">

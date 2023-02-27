@@ -5,7 +5,7 @@ import SingleRecipe from "../components/SingleRecipe.vue";
 
 const routes = [
 	{ path: "/", name: "Home", component: Recipes },
-	{ path: "/save", name: "Save", component: RecipeForm },
+	{ path: "/save/:id", name: "Save", component: RecipeForm },
 	{ path: "/recipe/:id", name: "SingleRecipe", component: SingleRecipe },
 ];
 

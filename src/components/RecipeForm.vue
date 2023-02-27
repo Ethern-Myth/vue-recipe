@@ -1,22 +1,42 @@
-<script setup>
-import { ref, onMounted } from "vue";
-import { POST_Recipe } from "../controllers/controller";
+<script>
+import { GET_Recipe_BY_id, POST_Recipe, PUT_Recipe } from "../controllers/controller";
 
-const title = ref('');
-const tags = ref('');
-const body = ref('');
-const recipe_id = ref(0);
-
-const saveRecipe = async (e) => {
-    e.preventDefault();
-    const recipe = {
-        title: title.value,
-        tags: tags.value,
-        body: body.value
+export default {
+    data() {
+        return {
+            title: '',
+            tags: '',
+            body: '',
+            recipe_id: 0,
+        }
+    },
+    created() {
+        this.recipe_id = this.$route.params.id;
+        if (this.recipe_id > 0) {
+            GET_Recipe_BY_id(this.recipe_id).then((res) => {
+                this.title = res.title;
+                this.tags = res.tags;
+                this.body = res.body;
+            })
+        }
+    },
+    methods: {
+        async saveRecipe(e) {
+            e.preventDefault();
+            const recipe = {
+                title: this.title,
+                tags: this.tags,
+                body: this.body
+            }
+            if (this.recipe_id > 0) {
+                PUT_Recipe(this.recipe_id, recipe);
+                setTimeout(() => { window.location.href = `/recipe/${this.recipe_id}`; }, 1500);
+            } else {
+                POST_Recipe(recipe);
+                setTimeout(() => { window.location.href = "/"; }, 1500);
+            }
+        }
     }
-    // TODO: Implement UPDATE with POST by ID
-    POST_Recipe(recipe);
-    setTimeout(() => { window.location.href = "/"; }, 3000);
 }
 </script>
 
