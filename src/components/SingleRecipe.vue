@@ -11,6 +11,9 @@ export default {
     created() {
         this.id = this.$route.params.id;
         GET_Recipe_BY_id(this.id).then((res) => this.recipe = res)
+    },
+    methods() {
+
     }
 }
 
