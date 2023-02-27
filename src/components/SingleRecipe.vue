@@ -26,7 +26,7 @@ export default {
             <small>{{ recipe.tags }}</small>
             <i>{{ recipe.created_at }}</i>
         </div>
-        <div class="col hstack justify-content-end">
+        <div class="col hstack gap-2 justify-content-end">
             <router-link to="/save" class="btn btn-secondary">Edit</router-link>
             <button class="btn btn-danger">Delete</button>
         </div>
