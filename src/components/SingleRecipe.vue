@@ -24,7 +24,7 @@ export default {
         <div class="col">
             <h3>{{ recipe.title }}</h3>
             <small>{{ recipe.tags }}</small>
-            <i>{{ recipe.created_at }}</i>
+            <small><i>{{ recipe.created_at }}</i></small>
         </div>
         <div class="col hstack gap-2 justify-content-end">
             <router-link to="/save" class="btn btn-secondary">Edit</router-link>
