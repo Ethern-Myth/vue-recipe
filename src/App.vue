@@ -1,12 +1,10 @@
 <script setup>
-import Recipes from "./components/Recipes.vue";
 </script>
 
 <template>
-    <div class="container m-4">
-        <Recipes/>
-    </div>  
+    <div class="container mt-4">
+        <router-view />
+    </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
